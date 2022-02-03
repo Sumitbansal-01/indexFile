@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        p {
+            color: darkslategray;
+        }
+
+        .drag-container {
+            display: flex;
+            min-height: 50vh;
+            height: 60%
+        }
+
+        .drag-down {
+            min-width: 100vh;
+            height: 40%;
+            background-color: whitesmoke;
+            overflow: auto;
+            flex: 1;
+        }
+
+        [class^="panel"] {
+            padding: 60px 24px;
+            background-color: whitesmoke;
+            overflow: auto
+        }
+
+        .panel-one {
+            width: 40%;
+        }
+
+        .panel-two {
+            flex: 1;
+            width: 60%;
+        }
+
+        .dragbar {
+            padding: 10px;
+            background-color: silver;
+        }
+        
+    </style>
+
+</head>
+
+<body>
+    <div style='height:100% ;max-height:150vh'>
+        <div class="drag-container" id='drag-up'>
+            <div class="panel-one" id="drag-left">
+                <h2>Window 1</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae praesentium quasi dolores enim omnis
+                 blanditiis quos dicta molestiae consectetur quae tempora exercitationem assumenda rerum similique atque 
+                 mollitia animi, quia quam dignissimos temporibus qui eum!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae praesentium quasi dolores enim omnis
+                blanditiis quos dicta molestiae consectetur quae tempora exercitationem assumenda rerum similique atque 
+                mollitia animi, quia quam dignissimos temporibus qui eum!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae praesentium quasi dolores enim omnis
+                blanditiis quos dicta molestiae consectetur quae tempora exercitationem assumenda rerum similique atque 
+                mollitia animi, quia quam dignissimos temporibus qui eum!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae praesentium quasi dolores enim omnis
+                blanditiis quos dicta molestiae consectetur quae tempora exercitationem assumenda rerum similique atque 
+                mollitia animi, quia quam dignissimos temporibus qui eum!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae praesentium quasi dolores enim omnis
+                blanditiis quos dicta molestiae consectetur quae tempora exercitationem assumenda rerum similique atque 
+                mollitia animi, quia quam dignissimos temporibus qui eum!</p>
+            </div>
+            <div class="dragbar" id="dragbar1" style="cursor:col-resize" ></div>
+            <div class="panel-two" id="drag-right">
+                <h2>Window 2</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae praesentium quasi dolores enim omnis
+                 blanditiis quos dicta molestiae consectetur quae tempora exercitationem assumenda rerum similique atque 
+                 mollitia animi, quia quam dignissimos temporibus qui eum!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae praesentium quasi dolores enim omnis
+                blanditiis quos dicta molestiae consectetur quae tempora exercitationem assumenda rerum similique atque 
+                mollitia animi, quia quam dignissimos temporibus qui eum!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae praesentium quasi dolores enim omnis
+                blanditiis quos dicta molestiae consectetur quae tempora exercitationem assumenda rerum similique atque 
+                mollitia animi, quia quam dignissimos temporibus qui eum!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae praesentium quasi dolores enim omnis
+                blanditiis quos dicta molestiae consectetur quae tempora exercitationem assumenda rerum similique atque 
+                mollitia animi, quia quam dignissimos temporibus qui eum!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae praesentium quasi dolores enim omnis
+                blanditiis quos dicta molestiae consectetur quae tempora exercitationem assumenda rerum similique atque 
+                mollitia animi, quia quam dignissimos temporibus qui eum!</p>
+            </div>
+            <script>
+                var left = document.getElementById("drag-left");
+                var right = document.getElementById("drag-right");
+                var bar1 = document.getElementById("dragbar1");
+
+                const drag1 = (e) => {
+                    (document.selection
+                        ? document.selection.empty()
+                        : window.getSelection().removeAllRanges());
+                    left.style.width = (e.pageX - bar1.offsetWidth / 2) + "px";
+                };
+
+                bar1.addEventListener("mousedown", () => {
+                    document.addEventListener("mousemove", drag1);
+                });
+
+                bar1.addEventListener("mouseup", () => {
+                    document.removeEventListener("mousemove", drag1);
+                });
+
+            </script>
+        </div>
+        <div class="dragbar" id="dragbar2" style='cursor:row-resize; '></div>
+        <div class='panel-three' id='drag-down'>
+
+            <h2>Window 3</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae praesentium quasi dolores enim omnis
+                 blanditiis quos dicta molestiae consectetur quae tempora exercitationem assumenda rerum similique atque 
+                 mollitia animi, quia quam dignissimos temporibus qui eum!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae praesentium quasi dolores enim omnis
+                blanditiis quos dicta molestiae consectetur quae tempora exercitationem assumenda rerum similique atque 
+                mollitia animi, quia quam dignissimos temporibus qui eum!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae praesentium quasi dolores enim omnis
+                blanditiis quos dicta molestiae consectetur quae tempora exercitationem assumenda rerum similique atque 
+                mollitia animi, quia quam dignissimos temporibus qui eum!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae praesentium quasi dolores enim omnis
+                blanditiis quos dicta molestiae consectetur quae tempora exercitationem assumenda rerum similique atque 
+                mollitia animi, quia quam dignissimos temporibus qui eum!</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae praesentium quasi dolores enim omnis
+                blanditiis quos dicta molestiae consectetur quae tempora exercitationem assumenda rerum similique atque 
+                mollitia animi, quia quam dignissimos temporibus qui eum!</p>
+
+        </div>
+        <script>
+            var up = document.getElementById("drag-up");
+            var down = document.getElementById("drag-down");
+            var bar2 = document.getElementById("dragbar2");
+
+            const drag2 = (e) => {
+                    (document.selection? document.selection.empty(): window.getSelection().removeAllRanges());
+                    up.style.height = (e.pageY - bar2.offsetHeight / 2) + "px";
+                };
+
+                bar2.addEventListener("mousedown", () => {
+                    document.addEventListener("mousemove", drag2);
+                });
+
+                bar2.addEventListener("mouseup", () => {
+                    document.removeEventListener("mousemove", drag2);
+                });
+        </script>
+    </div>
+
+
+
+</body>
+
+</html>
